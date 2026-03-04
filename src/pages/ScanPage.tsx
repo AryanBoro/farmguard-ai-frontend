@@ -252,16 +252,46 @@ const ScanPage = () => {
             <div className="space-y-3 text-left">
               <GlassCard className="p-4 space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">Disease</p>
-                <p className="font-semibold text-foreground">{result.disease || "Unknown"}</p>
+                <p className="font-semibold text-foreground">{result.common_name || result.class_name || "Unknown"}</p>
               </GlassCard>
               <GlassCard className="p-4 space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">Confidence</p>
-                <p className="font-semibold text-primary">{((result.confidence || 0) * 100).toFixed(1)}%</p>
+                <p className="font-semibold text-primary">{(result.confidence || 0).toFixed(1)}%</p>
               </GlassCard>
               {result.severity && (
                 <GlassCard className="p-4 space-y-1">
                   <p className="text-xs text-muted-foreground uppercase tracking-wider">Severity</p>
-                  <p className="font-semibold text-foreground">{result.severity}</p>
+                  <p className="font-semibold capitalize" style={{ color: result.severity_color }}>{result.severity}</p>
+                </GlassCard>
+              )}
+              {result.description && (
+                <GlassCard className="p-4 space-y-1">
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Description</p>
+                  <p className="text-sm text-foreground">{result.description}</p>
+                </GlassCard>
+              )}
+              {result.immediate_actions?.length > 0 && (
+                <GlassCard className="p-4 space-y-2">
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Immediate Actions</p>
+                  <ul className="text-sm text-foreground space-y-1 list-disc list-inside">
+                    {result.immediate_actions.map((a, i) => <li key={i}>{a}</li>)}
+                  </ul>
+                </GlassCard>
+              )}
+              {result.prevention?.length > 0 && (
+                <GlassCard className="p-4 space-y-2">
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Prevention</p>
+                  <ul className="text-sm text-foreground space-y-1 list-disc list-inside">
+                    {result.prevention.map((p, i) => <li key={i}>{p}</li>)}
+                  </ul>
+                </GlassCard>
+              )}
+              {result.organic_options?.length > 0 && (
+                <GlassCard className="p-4 space-y-2">
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Organic Options</p>
+                  <ul className="text-sm text-foreground space-y-1 list-disc list-inside">
+                    {result.organic_options.map((o, i) => <li key={i}>{o}</li>)}
+                  </ul>
                 </GlassCard>
               )}
             </div>
