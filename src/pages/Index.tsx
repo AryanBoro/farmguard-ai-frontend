@@ -84,11 +84,8 @@ const Index = () => {
 
             {/* Heading */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight hero-fade-in hd-200">
-              <span className="text-foreground">FarmGuard</span>
-              <br />
+              <span className="text-foreground">FarmGuard </span>
               <span className="text-primary text-glow">AI</span>
-              <br />
-              <span className="text-foreground">Crop Shield</span>
             </h1>
 
             {/* Description */}
@@ -196,7 +193,7 @@ const Index = () => {
             {/* Marquee Card */}
             <div className="glass-strong rounded-2xl p-4 overflow-hidden hero-fade-in hd-500">
               <p className="text-xs text-muted-foreground uppercase tracking-wider mb-3">
-                Trusted by Agricultural Leaders
+                Protecting Farms Worldwide 🌍
               </p>
               <div className="overflow-hidden">
                 <div className="flex hero-marquee w-max">
