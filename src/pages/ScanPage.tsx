@@ -256,7 +256,7 @@ const ScanPage = () => {
               </GlassCard>
               <GlassCard className="p-4 space-y-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">Confidence</p>
-                <p className="font-semibold text-primary">{(result.confidence || 0).toFixed(1)}%</p>
+                <p className="font-semibold text-primary">{result.confidence}%</p>
               </GlassCard>
               {result.severity && (
                 <GlassCard className="p-4 space-y-1">
