@@ -117,7 +117,7 @@ const DashboardPage = () => {
               <GlassCard className="p-4">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Confidence</p>
                 <p className="font-semibold text-primary">
-                  {(latestResult.confidence || 0).toFixed(1)}%
+                  {latestResult.confidence}%
                 </p>
               </GlassCard>
               <GlassCard className="p-4">
@@ -157,9 +157,9 @@ const DashboardPage = () => {
             style={{ animation: "fadeSlideIn 0.6s ease-out 0.2s forwards" }}
           >
             <StatCard icon={BarChart3} label="Total Scans" value={stats.total_scans} />
-            <StatCard icon={AlertTriangle} label="Diseases Found" value={stats.diseases_detected} color="text-destructive" />
-            <StatCard icon={CheckCircle2} label="Healthy Crops" value={stats.healthy_crops} />
-            <StatCard icon={ShieldCheck} label="Accuracy" value={`${stats.accuracy}%`} />
+            <StatCard icon={AlertTriangle} label="Diseases Found" value={stats.disease_detections} color="text-destructive" />
+            <StatCard icon={CheckCircle2} label="Healthy Crops" value={stats.healthy_detections} />
+            <StatCard icon={ShieldCheck} label="Avg Confidence" value={`${stats.avg_confidence?.toFixed(1)}%`} />
           </div>
         )}
 
@@ -230,7 +230,7 @@ const DashboardPage = () => {
                   </div>
                   <div className="text-right">
                     <p className="text-sm font-semibold text-primary">
-                      {(item.confidence || 0).toFixed(0)}%
+                      {item.confidence}%
                     </p>
                     {item.severity && (
                       <p className="text-xs text-muted-foreground">{item.severity}</p>

@@ -37,9 +37,11 @@ export interface HistoryItem {
 
 export interface DashboardStats {
   total_scans: number;
-  diseases_detected: number;
-  healthy_crops: number;
-  accuracy: number;
+  disease_detections: number;
+  healthy_detections: number;
+  avg_confidence: number;
+  last_scan?: string;
+  top_diseases?: { class_name: string; common_name: string; count: number }[];
 }
 
 export interface TrendData {
