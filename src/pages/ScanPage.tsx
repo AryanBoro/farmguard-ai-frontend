@@ -11,7 +11,7 @@ import { Progress } from "@/components/ui/progress";
 
 const ScanPage = () => {
   const navigate = useNavigate();
-  const [crops, setCrops] = useState<CropType[]>([]);
+  const [crops, setCrops] = useState<any[]>([]);
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [cropType, setCropType] = useState("");
@@ -162,11 +162,14 @@ const ScanPage = () => {
                   className="w-full h-10 rounded-lg px-3 text-sm glass text-foreground border-0 outline-none focus:ring-2 focus:ring-primary"
                 >
                   <option value="" className="bg-background">Select crop...</option>
-                  {crops.map((c) => (
-                    <option key={c.id || c.name} value={c.name || c.id} className="bg-background">
-                      {c.name || c.id}
-                    </option>
-                  ))}
+                  {crops.map((c, i) => {
+                    const val = typeof c === "string" ? c : (c.name || c.id);
+                    return (
+                      <option key={val + i} value={val} className="bg-background">
+                        {val}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
 

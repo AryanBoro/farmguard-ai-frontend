@@ -41,7 +41,8 @@ export interface TrendData {
 export async function getCrops(): Promise<CropType[]> {
   const res = await fetch(`${BASE}/crops`);
   if (!res.ok) throw new Error("Failed to fetch crops");
-  return res.json();
+  const data = await res.json();
+  return data.crops || [];
 }
 
 export async function predict(file: File, cropType: string, cropAge: string, location: string): Promise<PredictionResult> {
