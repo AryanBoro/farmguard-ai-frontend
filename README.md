@@ -1,73 +1,107 @@
-# Welcome to your Lovable project
+# 🌱 FarmGuard AI — Frontend
 
-## Project info
+> Intelligent crop disease detection interface built with React, TypeScript, Tailwind CSS, and shadcn/ui.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+![FarmGuard AI](https://img.shields.io/badge/FarmGuard-AI-green?style=for-the-badge)
+![React](https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)
+![Tailwind](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=for-the-badge&logo=tailwindcss)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## Overview
 
-**Use Lovable**
+FarmGuard AI is a crop disease detection web app that lets farmers upload a leaf image and instantly receive AI-powered disease diagnosis, treatment recommendations, weather risk assessment, and crop history analytics.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+This repo is the **frontend only**. All AI inference and data is served by the backend at:
+```
+https://borreooo-farmguard-ai.hf.space
+```
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- 🔍 **Scan** — Upload a leaf image, select crop type, get instant disease diagnosis
+- 💊 **Remedies** — Immediate actions, prevention tips, and organic treatment options
+- 🌤️ **Weather Risk** — Real-time weather-based disease risk assessment
+- 📊 **Dashboard** — Scan history, disease trends, and analytics
+- 🌿 **History** — Full scan log with severity badges and crop filters
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## Tech Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **React 18** + **TypeScript**
+- **Tailwind CSS** — glassmorphism design system
+- **shadcn/ui** — component library
+- **Three.js** — animated WebGL shader background
+- **Recharts** — dashboard charts
+- **lucide-react** — icons
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## Design System
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Dark glassmorphism aesthetic throughout:
+- Background: `zinc-950`
+- Cards: `bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl`
+- Animations: `fadeSlideIn` on all cards
+- Severity: green (healthy) → amber (moderate) → red (high) → purple (critical)
+
+---
+
+## Getting Started
+
+### 1. Clone the repo
+```bash
+git clone https://github.com/AryanBoro/farmguard-ai-frontend
+cd farmguard-ai-frontend
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Set environment variable
+Create a `.env` file:
+```
+VITE_API_URL=https://borreooo-farmguard-ai.hf.space
+```
+
+### 4. Run locally
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## API
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+All data is fetched from the live backend. Zero mock data.
 
-## What technologies are used for this project?
+| Function | Method | Endpoint |
+|---|---|---|
+| getCrops() | GET | `/crops` |
+| predict() | POST | `/predict` |
+| getHistory() | GET | `/history` |
+| getStats() | GET | `/history/stats` |
+| getTrends() | GET | `/history/trends` |
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Deployment
 
-## How can I deploy this project?
+Deployed on **Vercel**. Every push to `main` triggers an automatic redeploy.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AryanBoro/farmguard-ai-frontend)
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## Related
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- 🔧 **Backend repo:** [farmguard-ai](https://github.com/AryanBoro/farmguard-ai) — FastAPI + PyTorch EfficientNet-B4
+- 🤗 **Live API:** [HuggingFace Space](https://huggingface.co/spaces/borreooo/farmguard-ai)
