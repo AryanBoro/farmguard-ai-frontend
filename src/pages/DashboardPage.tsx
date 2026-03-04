@@ -112,39 +112,39 @@ const DashboardPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <GlassCard className="p-4">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Disease</p>
-                <p className="font-semibold text-foreground">{latestResult.disease}</p>
+                <p className="font-semibold text-foreground">{latestResult.common_name || latestResult.class_name}</p>
               </GlassCard>
               <GlassCard className="p-4">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Confidence</p>
                 <p className="font-semibold text-primary">
-                  {((latestResult.confidence || 0) * 100).toFixed(1)}%
+                  {(latestResult.confidence || 0).toFixed(1)}%
                 </p>
               </GlassCard>
               <GlassCard className="p-4">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Severity</p>
-                <p className="font-semibold text-foreground">{latestResult.severity || "N/A"}</p>
+                <p className="font-semibold capitalize" style={{ color: latestResult.severity_color }}>{latestResult.severity || "N/A"}</p>
               </GlassCard>
             </div>
-            {(latestResult.treatment || latestResult.description) && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {latestResult.description && (
-                  <GlassCard className="p-4">
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Description</p>
-                    <p className="text-sm text-foreground">{latestResult.description}</p>
-                  </GlassCard>
-                )}
-                {latestResult.treatment && (
-                  <GlassCard className="p-4">
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Treatment</p>
-                    <p className="text-sm text-foreground">{latestResult.treatment}</p>
-                  </GlassCard>
-                )}
-              </div>
+            {latestResult.description && (
+              <GlassCard className="p-4">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Description</p>
+                <p className="text-sm text-foreground">{latestResult.description}</p>
+              </GlassCard>
             )}
-            {latestResult.prevention && (
+            {latestResult.immediate_actions?.length > 0 && (
+              <GlassCard className="p-4">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Immediate Actions</p>
+                <ul className="text-sm text-foreground space-y-1 list-disc list-inside">
+                  {latestResult.immediate_actions.map((a, i) => <li key={i}>{a}</li>)}
+                </ul>
+              </GlassCard>
+            )}
+            {latestResult.prevention?.length > 0 && (
               <GlassCard className="p-4">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Prevention</p>
-                <p className="text-sm text-foreground">{latestResult.prevention}</p>
+                <ul className="text-sm text-foreground space-y-1 list-disc list-inside">
+                  {latestResult.prevention.map((p, i) => <li key={i}>{p}</li>)}
+                </ul>
               </GlassCard>
             )}
           </GlassCard>
@@ -223,14 +223,14 @@ const DashboardPage = () => {
               {history.map((item, i) => (
                 <GlassCard key={item.id || i} className="p-4 flex items-center justify-between">
                   <div className="space-y-1">
-                    <p className="font-medium text-foreground">{item.disease}</p>
+                    <p className="font-medium text-foreground">{item.disease || item.crop_type}</p>
                     <p className="text-xs text-muted-foreground">
                       {item.crop_type} • {new Date(item.created_at).toLocaleDateString()}
                     </p>
                   </div>
                   <div className="text-right">
                     <p className="text-sm font-semibold text-primary">
-                      {((item.confidence || 0) * 100).toFixed(0)}%
+                      {(item.confidence || 0).toFixed(0)}%
                     </p>
                     {item.severity && (
                       <p className="text-xs text-muted-foreground">{item.severity}</p>

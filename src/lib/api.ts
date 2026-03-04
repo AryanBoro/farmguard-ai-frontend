@@ -6,13 +6,23 @@ export interface CropType {
 }
 
 export interface PredictionResult {
-  disease: string;
+  class_name: string;
+  common_name: string;
   confidence: number;
-  description: string;
-  treatment: string;
-  prevention: string;
+  is_healthy: boolean;
   severity: string;
-  image_url?: string;
+  severity_color: string;
+  description: string;
+  immediate_actions: string[];
+  prevention: string[];
+  organic_options: string[];
+  risk_factors: string[];
+  growth_stage: string;
+  alternatives?: { class_name: string; confidence: number }[];
+  pathogen?: string;
+  crop_filter_applied?: string;
+  weather?: any;
+  weather_risk?: any;
 }
 
 export interface HistoryItem {
