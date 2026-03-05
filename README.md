@@ -9,6 +9,9 @@
 
 ---
 
+<img width="1458" height="813" alt="Screenshot 2026-03-05 015325" src="https://github.com/user-attachments/assets/6f6915e2-9442-4b9c-9396-43a73db9b178" />
+
+
 ## Overview
 
 FarmGuard AI is a crop disease detection web app that lets farmers upload a leaf image and instantly receive AI-powered disease diagnosis, treatment recommendations, weather risk assessment, and crop history analytics.
