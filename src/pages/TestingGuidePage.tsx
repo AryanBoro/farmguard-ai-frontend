@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Search, ExternalLink, Download } from "lucide-react";
+import { ArrowLeft, Download } from "lucide-react";
 import AnimatedShaderBackground from "@/components/ui/animated-shader-background";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Button } from "@/components/ui/button";
@@ -96,11 +96,15 @@ const CROP_DATA = [
 const TestingGuidePage = () => {
   const navigate = useNavigate();
 
-  const getSearchUrl = (crop: string, disease: string) => {
-    const query = disease === "Healthy"
-      ? `${crop} healthy leaf`
-      : `${crop} ${disease} leaf disease`;
-    return `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(query)}`;
+  const handleDownload = async (src: string, filename: string) => {
+    const response = await fetch(src);
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -131,12 +135,11 @@ const TestingGuidePage = () => {
         {/* Instructions */}
         <GlassCard strong glow className="p-6 mb-10">
           <h2 className="text-lg font-semibold text-foreground mb-4">How to Test</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
-              { step: "1", text: "Right-click a sample image below and save it" },
-              { step: "2", text: "Or pick a crop card and search Google Images" },
-              { step: "3", text: "Go to the Scan page" },
-              { step: "4", text: "Upload the saved image and scan!" },
+              { step: "1", text: "Click a sample image below to download it" },
+              { step: "2", text: "Go to the Scan page" },
+              { step: "3", text: "Upload the saved image and scan!" },
             ].map((s) => (
               <div key={s.step} className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
@@ -151,15 +154,24 @@ const TestingGuidePage = () => {
         {/* Sample Images */}
         <div className="mb-10">
           <h2 className="text-2xl font-bold text-foreground mb-2">Use Sample Images</h2>
-          <p className="text-sm text-muted-foreground mb-5">Right-click any image → "Save image as" → then upload it on the Scan page</p>
+          <p className="text-sm text-muted-foreground mb-5">Click any image to download it, then upload it on the Scan page</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {SAMPLE_IMAGES.map((img) => (
-              <GlassCard key={img.label} className="overflow-hidden">
-                <img
-                  src={img.src}
-                  alt={img.label}
-                  className="w-full h-36 object-cover"
-                />
+              <GlassCard
+                key={img.label}
+                className="overflow-hidden cursor-pointer group hover:scale-[1.02] transition-transform"
+                onClick={() => handleDownload(img.src, `${img.label.toLowerCase().replace(/\s+/g, "-")}.webp`)}
+              >
+                <div className="relative">
+                  <img
+                    src={img.src}
+                    alt={img.label}
+                    className="w-full h-36 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <Download className="w-8 h-8 text-primary" />
+                  </div>
+                </div>
                 <div className="p-3 space-y-1">
                   <p className="text-sm font-semibold text-foreground">{img.label}</p>
                   <p className="text-xs text-muted-foreground">{img.crop}</p>
@@ -176,23 +188,10 @@ const TestingGuidePage = () => {
               <h3 className="text-lg font-semibold text-foreground">{crop.name}</h3>
               <div className="space-y-1.5">
                 {crop.diseases.map((disease) => (
-                  <div
-                    key={disease}
-                    className="flex items-center justify-between gap-2"
-                  >
-                    <span className="text-sm text-muted-foreground truncate">
+                  <div key={disease} className="flex items-center gap-2">
+                    <span className="text-sm text-muted-foreground">
                       {disease === "Healthy" ? "✅ Healthy" : `🔴 ${disease}`}
                     </span>
-                    <a
-                      href={getSearchUrl(crop.name, disease)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-shrink-0 inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
-                    >
-                      <Search className="w-3 h-3" />
-                      <span className="hidden sm:inline">Search</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
                   </div>
                 ))}
               </div>
