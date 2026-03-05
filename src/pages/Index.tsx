@@ -71,7 +71,7 @@ const Index = () => {
       <div className="relative z-[3] flex justify-end px-4 sm:px-6 lg:px-8 pt-4">
         <button
           onClick={() => navigate("/testing")}
-          className="inline-flex items-center gap-1.5 glass rounded-full px-4 py-2 text-sm font-medium text-foreground hover:bg-[hsla(220,15%,15%,0.6)] transition-all"
+          className="inline-flex items-center gap-2 glass rounded-full px-6 py-3 text-base font-semibold text-foreground hover:bg-[hsla(220,15%,15%,0.6)] transition-all shadow-[0_0_20px_-5px_hsl(var(--primary)/0.3)]"
         >
           🧪 Testing?
         </button>
