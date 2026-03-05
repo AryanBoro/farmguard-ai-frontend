@@ -134,10 +134,10 @@ const Index = () => {
 
               <div className="relative glass-strong rounded-2xl p-6 space-y-5 glass-glow">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Target className="w-5 h-5 text-primary" />
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Target className="w-6 h-6 text-primary" />
                   </div>
-                  <p className="text-sm font-medium text-muted-foreground">Real-Time Crop Analysis</p>
+                  <p className="text-lg font-semibold text-foreground">Real-Time Crop Analysis</p>
                 </div>
 
                 {/* Progress */}
@@ -155,8 +155,8 @@ const Index = () => {
 
                 {/* Mini Stats */}
                 <div className="grid grid-cols-3 gap-4">
-                  <StatItem value="50+" label="Crop Types" />
-                  <StatItem value="200+" label="Diseases" />
+                  <StatItem value="14" label="Crop Types" />
+                  <StatItem value="35+" label="Diseases" />
                   <StatItem value="<2s" label="Scan Time" />
                 </div>
 
