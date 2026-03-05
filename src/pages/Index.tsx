@@ -133,14 +133,11 @@ const Index = () => {
               <div className="absolute -inset-1 bg-primary/10 rounded-3xl blur-xl" />
 
               <div className="relative glass-strong rounded-2xl p-6 space-y-5 glass-glow">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Target className="w-6 h-6 text-primary" />
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Target className="w-5 h-5 text-primary" />
                   </div>
-                  <div>
-                    <p className="text-3xl font-bold text-foreground">10K+</p>
-                    <p className="text-sm text-muted-foreground">Crops Scanned</p>
-                  </div>
+                  <p className="text-sm font-medium text-muted-foreground">Real-Time Crop Analysis</p>
                 </div>
 
                 {/* Progress */}
