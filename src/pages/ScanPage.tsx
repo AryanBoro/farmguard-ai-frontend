@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { getCrops, predict, type CropType, type PredictionResult } from "@/lib/api";
 import { Progress } from "@/components/ui/progress";
+import LocationDropdown from "@/components/LocationDropdown";
 
 const ScanPage = () => {
   const navigate = useNavigate();
@@ -191,12 +192,7 @@ const ScanPage = () => {
                 <Label className="text-foreground flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-primary" /> Location
                 </Label>
-                <Input
-                  placeholder="e.g., Punjab, India"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  className="glass border-0 text-foreground placeholder:text-muted-foreground"
-                />
+                <LocationDropdown value={location} onChange={setLocation} />
               </div>
             </div>
 
