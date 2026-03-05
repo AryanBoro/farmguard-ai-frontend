@@ -67,6 +67,16 @@ const Index = () => {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background z-[1]" />
 
+      {/* Top nav */}
+      <div className="relative z-[3] flex justify-end px-4 sm:px-6 lg:px-8 pt-4">
+        <button
+          onClick={() => navigate("/testing")}
+          className="inline-flex items-center gap-1.5 glass rounded-full px-4 py-2 text-sm font-medium text-foreground hover:bg-[hsla(220,15%,15%,0.6)] transition-all"
+        >
+          🧪 Testing?
+        </button>
+      </div>
+
       <div className="relative z-[2] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           {/* LEFT COLUMN */}
