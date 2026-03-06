@@ -141,11 +141,11 @@ const TestingGuidePage = () => {
               { step: "2", text: "Go to the Scan page" },
               { step: "3", text: "Upload the saved image and scan!" },
             ].map((s) => (
-              <div key={s.step} className="flex items-start gap-3">
+              <div key={s.step} className="flex items-center gap-3 justify-center sm:justify-start">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
                   {s.step}
                 </div>
-                <p className="text-sm text-foreground pt-1">{s.text}</p>
+                <p className="text-sm text-foreground">{s.text}</p>
               </div>
             ))}
           </div>
