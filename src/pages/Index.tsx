@@ -67,15 +67,7 @@ const Index = () => {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background z-[1]" />
 
-      {/* Top nav */}
-      <div className="relative z-[3] flex justify-end px-4 sm:px-6 lg:px-8 pt-4">
-        <button
-          onClick={() => navigate("/testing")}
-          className="inline-flex items-center gap-2 glass rounded-full px-6 py-3 text-base font-semibold text-foreground hover:bg-[hsla(220,15%,15%,0.6)] transition-all shadow-[0_0_20px_-5px_hsl(var(--primary)/0.3)]"
-        >
-          🧪 Testing?
-        </button>
-      </div>
+      {/* Top nav removed - testing button moved to CTA section */}
 
       <div className="relative z-[2] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
@@ -105,7 +97,7 @@ const Index = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 hero-fade-in hd-400">
+            <div className="flex flex-wrap gap-3 hero-fade-in hd-400">
               <button
                 onClick={() => navigate("/scan")}
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-full font-semibold hover:bg-primary/90 transition-all shadow-[0_0_25px_-5px_hsl(var(--primary)/0.5)] hover:shadow-[0_0_35px_-5px_hsl(var(--primary)/0.7)] text-base"
@@ -121,6 +113,13 @@ const Index = () => {
               >
                 <BarChart3 className="w-5 h-5" />
                 View Dashboard
+              </button>
+
+              <button
+                onClick={() => navigate("/testing")}
+                className="inline-flex items-center gap-2 glass text-foreground px-6 py-3.5 rounded-full font-semibold hover:bg-[hsla(220,15%,15%,0.6)] transition-all border border-primary/30"
+              >
+                🧪 Testing Guide
               </button>
             </div>
           </div>
