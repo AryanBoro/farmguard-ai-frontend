@@ -71,9 +71,9 @@ const Index = () => {
       <div className="relative z-[2] flex justify-end px-4 sm:px-6 lg:px-8 pt-6">
         <button
           onClick={() => navigate("/testing")}
-          className="inline-flex items-center gap-2 glass text-foreground px-4 py-2 rounded-full text-sm font-medium hover:bg-[hsla(220,15%,15%,0.6)] transition-all border border-primary/30"
+          className="inline-flex items-center gap-2 glass text-foreground px-6 py-3 rounded-full text-base font-semibold hover:bg-[hsla(220,15%,15%,0.6)] transition-all border border-primary/30"
         >
-          <Sprout className="w-4 h-4 text-primary" />
+          <Sprout className="w-5 h-5 text-primary" />
           Testing Guide
         </button>
       </div>

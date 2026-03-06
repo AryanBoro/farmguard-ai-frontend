@@ -135,13 +135,13 @@ const TestingGuidePage = () => {
         {/* Instructions */}
         <GlassCard strong glow className="p-6 mb-10">
           <h2 className="text-lg font-semibold text-foreground mb-4">How to Test</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-0 sm:justify-between">
             {[
               { step: "1", text: "Click a sample image below to download it" },
               { step: "2", text: "Go to the Scan page" },
               { step: "3", text: "Upload the saved image and scan!" },
             ].map((s) => (
-              <div key={s.step} className="flex items-center gap-3 justify-center sm:justify-start">
+              <div key={s.step} className="flex items-center gap-3">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
                   {s.step}
                 </div>
