@@ -1,10 +1,13 @@
 import React from "react";
 import { motion } from "motion/react";
 import { ShieldCheck, ArrowUpRight, LogIn, UserPlus, Leaf, Sprout, ScanLine, Activity } from "lucide-react";
+import darkLeaves from "@/assets/dark-leaves.jpg";
 
 interface FarmGuardLandingPageProps {
   onScanClick?: () => void;
   onDashboardClick?: () => void;
+  onLoginClick?: () => void;
+  onSignupClick?: () => void;
 }
 
 const Stat: React.FC<{ label: string; value: string }> = ({ label, value }) => (
@@ -36,7 +39,8 @@ function MiniBars() {
           initial={{ height: 0 }}
           animate={{ height: `${h}%` }}
           transition={{ duration: 0.8, delay: i * 0.1, ease: "easeOut" }}
-          className="w-2 rounded-t bg-gradient-to-t from-emerald-500 to-emerald-300"
+          className="w-2 rounded-t"
+          style={{ background: "linear-gradient(to top, #556B2F, #8A9A5B)" }}
         />
       ))}
     </div>
@@ -53,13 +57,13 @@ function LeafGrid() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: i * 0.04, duration: 0.4 }}
-            className={`rounded-md ${
+            className={`rounded-md aspect-square ${
               i % 5 === 0
-                ? "bg-emerald-500/80"
+                ? "bg-[#556B2F]/80"
                 : i % 3 === 0
-                ? "bg-emerald-200"
-                : "bg-emerald-50"
-            } aspect-square`}
+                ? "bg-[#C9D4A0]"
+                : "bg-[#F4F6EC]"
+            }`}
           />
         ))}
       </div>
@@ -69,7 +73,7 @@ function LeafGrid() {
         transition={{ delay: 0.5, duration: 0.6 }}
         className="absolute top-3 right-3 h-12 w-12 rounded-2xl bg-white shadow-lg flex items-center justify-center"
       >
-        <ScanLine className="h-6 w-6 text-emerald-600" />
+        <ScanLine className="h-6 w-6 text-[#556B2F]" />
       </motion.div>
     </div>
   );
@@ -78,9 +82,11 @@ function LeafGrid() {
 export default function FarmGuardLandingPage({
   onScanClick,
   onDashboardClick,
+  onLoginClick,
+  onSignupClick,
 }: FarmGuardLandingPageProps) {
   return (
-    <div className="font-jakarta min-h-screen w-full bg-gradient-to-b from-neutral-50 via-white to-emerald-50/40 text-neutral-900">
+    <div className="font-jakarta min-h-screen w-full bg-gradient-to-b from-neutral-50 via-white to-[#F4F6EC] text-neutral-900">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         .font-jakarta { font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif; }
@@ -89,31 +95,32 @@ export default function FarmGuardLandingPage({
       {/* Top nav */}
       <header className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-5">
         <div className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-md">
+          <div
+            className="h-9 w-9 rounded-xl flex items-center justify-center shadow-md"
+            style={{ background: "linear-gradient(135deg, #6B8E23, #3F5025)" }}
+          >
             <Leaf className="h-5 w-5 text-white" />
           </div>
           <span className="text-lg font-bold tracking-tight">farmguard</span>
         </div>
 
-        <nav className="hidden md:flex items-center gap-8">
-          {["Solutions", "Product", "Company", "Insight"].map((item) => (
-            <a
-              key={item}
-              href="#"
-              className="text-sm text-neutral-600 hover:text-neutral-900 transition"
-            >
-              {item}
-            </a>
-          ))}
+        <nav className="hidden md:flex items-center gap-2">
+          <button
+            onClick={onScanClick}
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 transition"
+          >
+            <ScanLine className="h-4 w-4" />
+            Scan
+          </button>
         </nav>
 
         <div className="flex items-center gap-2">
-          <SoftButton>
+          <SoftButton onClick={onLoginClick}>
             <LogIn className="h-4 w-4" />
             <span className="hidden sm:inline">Login</span>
           </SoftButton>
           <button
-            onClick={onScanClick}
+            onClick={onSignupClick}
             className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-neutral-800"
           >
             <UserPlus className="h-4 w-4" />
@@ -149,7 +156,8 @@ export default function FarmGuardLandingPage({
           >
             <button
               onClick={onScanClick}
-              className="group inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/20 transition hover:bg-emerald-700"
+              className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
+              style={{ background: "#556B2F", boxShadow: "0 10px 25px -10px rgba(85,107,47,0.6)" }}
             >
               Scan Now
               <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -184,12 +192,12 @@ export default function FarmGuardLandingPage({
             transition={{ duration: 0.6, delay: 0.2 }}
             className="row-span-2 rounded-3xl bg-white shadow-xl shadow-neutral-200/60 border border-neutral-100 p-5 flex flex-col"
           >
-            <div className="relative flex-1 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-100/50 overflow-hidden min-h-[180px]">
+            <div className="relative flex-1 rounded-2xl overflow-hidden min-h-[180px]" style={{ background: "linear-gradient(135deg, #F4F6EC, #E6EBD3)" }}>
               <LeafGrid />
             </div>
 
             <div className="mt-4 space-y-3">
-              <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
+              <div className="inline-flex items-center gap-2 rounded-full bg-[#F4F6EC] px-3 py-1 text-xs font-medium text-[#3F5025]">
                 <ShieldCheck className="h-3.5 w-3.5" />
                 Disease Shield
               </div>
@@ -200,26 +208,33 @@ export default function FarmGuardLandingPage({
               </h3>
               <button
                 onClick={onScanClick}
-                className="text-sm font-medium text-emerald-700 hover:text-emerald-800 inline-flex items-center gap-1"
+                className="text-sm font-medium text-[#3F5025] hover:text-[#2A361A] inline-flex items-center gap-1"
               >
                 Try a scan <ArrowUpRight className="h-3.5 w-3.5" />
               </button>
             </div>
           </motion.div>
 
-          {/* Crops card */}
+          {/* Crops card — dark leaves image */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="rounded-3xl bg-neutral-900 text-white shadow-xl p-5 flex flex-col justify-between"
+            className="relative rounded-3xl text-white shadow-xl p-5 flex flex-col justify-between overflow-hidden"
           >
-            <div className="flex items-center justify-between">
-              <Sprout className="h-6 w-6 text-emerald-400" />
-              <span className="text-xs text-neutral-400">14 species</span>
+            <img
+              src={darkLeaves}
+              alt="Dark stylized leaves"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/70" />
+            <div className="relative flex items-center justify-between">
+              <Sprout className="h-6 w-6 text-[#A8B97A]" />
+              <span className="text-xs text-neutral-300">14 species</span>
             </div>
-            <div>
-              <p className="text-xs text-neutral-400 mb-1">Coverage</p>
+            <div className="relative">
+              <p className="text-xs text-neutral-300 mb-1">Coverage</p>
               <p className="text-base font-semibold leading-tight">
                 Hundreds of
                 <br />
@@ -241,7 +256,7 @@ export default function FarmGuardLandingPage({
                 Yield Recovery
               </div>
               <p className="mt-2 text-2xl font-bold">+24.5%</p>
-              <p className="text-xs text-emerald-600 font-medium">↑ vs untreated</p>
+              <p className="text-xs font-medium text-[#556B2F]">↑ vs untreated</p>
             </div>
             <MiniBars />
           </motion.div>
