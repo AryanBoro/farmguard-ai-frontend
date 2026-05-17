@@ -9,9 +9,7 @@
 
 ---
 
-<img width="1458" height="813" alt="Screenshot 2026-03-05 015325" src="<img width="1856" height="887" alt="image" src="https://github.com/user-attachments/assets/6ef9a96e-d0f5-4a25-903d-940aba7d339a" />
-" />
-
+src="<img width="1458" height="813" alt="image" src="https://github.com/user-attachments/assets/6ef9a96e-d0f5-4a25-903d-940aba7d339a" />
 
 ## Overview
 
