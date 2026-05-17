@@ -8,8 +8,7 @@
 ![Tailwind](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=for-the-badge&logo=tailwindcss)
 
 ---
-
-src="<img width="1458" height="813" alt="image" src="https://github.com/user-attachments/assets/6ef9a96e-d0f5-4a25-903d-940aba7d339a" />
+"<img width="1458" height="813" alt="image" src="https://github.com/user-attachments/assets/6ef9a96e-d0f5-4a25-903d-940aba7d339a" />
 
 ## Overview
 
